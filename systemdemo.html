@@ -1,0 +1,446 @@
+<script>
+    $(function(){
+        $('#test_ev_').on('click', function(){
+            var age = $('#age').val();
+            var classification = $('#classification').val();
+            var present_complain = $('#present_complain').val();
+            var location = $('#location').val();
+            var duration = $('#duration').val();
+            var pain_sympton = $('#pain_sympton').val();
+            var swelling_symptom = $('#swelling_symptom').val();
+            var nona = $('#nona').val();
+            var stimulus_pain = $('#stimulus_pain').val();
+            var pain_character = $('#pain_character').val();
+            var sensitivity = $('#sensitivity').val();
+            
+            var nocarousteeth = $('#nocarousteeth').val();
+            var notooth_affect = $('#notooth_affect').val();
+            var facial_assymmetry = $('#facial_assymmetry').val();
+            var investigation = $('#investigation').val();
+            var diet = $('#diet').val();
+            var aggravating_factor = $('#aggravating_factor').val();
+            var progression = $('#progression').val();
+            var pain = $('#pain').val();
+
+            if(age.length===0){alert('Age field cannot be left empty'); return ;  } 
+            else if(classification===''){alert('Classification field cannot be left unselected');return;}
+            else if(present_complain ===''){alert('Presenting Complain field cannot be left unselected');return;}
+            else if(location ===''){alert('Location field cannot be left unselected');return;}
+            else if(duration ===''){alert('Duration field cannot be left unselected'); return;}
+            else if(pain_sympton ===''){alert('Pain Sympton field cannot be left unselected'); return;}
+            else if(swelling_symptom ===''){alert('Swelling Sympton field cannot be left empty');return;}
+            else if(nona === ''){alert('Complication field cannot be left unselected'); return;} 
+            else if(stimulus_pain ===''){alert('Pain Stimulus field cannot be left empty'); return;}
+            else if(pain_character === '' ){alert('Pain Character field cannot be left unselected');return;}
+            else if(sensitivity === ''){alert('Sensitivity field cannot be left unselected');return;}
+             
+            else if(nocarousteeth.length ===0){alert('No of Carious field cannot be left unselected'); return;}   
+            else if(notooth_affect === ''){alert('Tooth Affected field cannot be left unselected'); return;}   
+            else if(facial_assymmetry === ''){alert('Facial field cannot be left unselected'); return;}   
+            else if(investigation === ''){alert('Investi field cannot be left unselected'); return;}   
+            else if(diet === ''){alert('diet field cannot be left unselected'); return;}   
+            else if(aggravating_factor === ''){alert('Aggregation Factor field cannot be left unselected'); return;}
+            else if(progression === ''){alert('Progression field cannot be left unselected'); return;}
+            else if(pain === ''){alert('Pain field cannot be left unselected'); return;}
+            else{
+            $.getJSON('/systemdeotesting', {
+                age:$('input[name="age"]').val(),
+                classification:$('select[name="classification"]').val(),
+                present_complain:$('select[name="present_complain"]').val(),
+                location:$('select[name="location"]').val(),
+                duration:$('select[name="duration"]').val(),
+                pain_sympton:$('select[name="pain_sympton"]').val(),
+                swelling_symptom : $('select[name="swelling_symptom"]').val(),
+                nona : $('select[name="nona"]').val(),
+                stimulus_pain : $('select[name="stimulus_pain"]').val(),
+                pain_character : $('select[name="pain_character"]').val(),
+                sensitivity : $('select[name="sensitivity"]').val(),
+                
+                nocarousteeth:$('input[name="nocarousteeth"]').val(),
+                notooth_affect : $('select[name="notooth_affect"]').val(),
+                facial_assymmetry : $('select[name="facial_assymmetry"]').val(),
+                investigation: $('select[name="investigation"]').val(),
+                diet : $('select[name="diet"]').val(),
+                aggravating_factor : $('select[name="aggravating_factor"]').val(),
+                progression : $('select[name="progression"]').val(),
+                pain: $('select[name="pain"]').val()
+            }, function(data){
+                $("#svm_res").text(data.svm_res);
+                $("#nb_res").text(data.nb_res);
+                $("#mlp_res").text(data.mlp_res);
+                $("#sst").text(data.stackres);
+                
+                $('#tret').text(data.trepla);
+
+                $('#risk').text(data.risk);
+                
+            });
+            return false;
+            }
+        });
+    });
+</script>
+<div>
+    <div class="row">
+        <div class="col-sm-5">            
+            <div class="form-group">                
+                <input type="number" name="age" id="age" class="form-control" placeholder="Age" >
+            </div>
+            <div class="form-group">                
+                <select id="classification" name="classification" class="form-control">
+                    <option value="">Classification</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="low">Low Risk</option>
+                    <option value="high">High Risk</option>
+                </select>
+            </div>
+            <div class="form-group">                
+                 <select id="present_complain" name="present_complain" class="form-control">
+                    <option value="">Presenting Complain</option>
+                    <option value="4">Swelling, Pain</option>
+                    <option value="3">Hole, Pain</option>
+                    <option value="2">Pain</option>
+                    <option value="1">Hole</option>
+                </select> </div>
+
+        <div class="form-group">                
+                <select id="location" name="location" class="form-control">
+                    <option value="">Location</option>
+                    <option value="0">LR,A</option>
+                    <option value="1">LR, B</option>
+                    <option value="2">LR, C</option>
+                    <option value="3">LR, D</option>
+                    <option value="4">LR, E</option>
+                    <option value="5">LR, AB</option>
+                    <option value="6">LR, AC</option>
+                    <option value="7">LR, AD</option>
+                    <option value="8">LR, AE</option>
+                    <option value="9">LR, BC</option>
+                    <option value="10">LR, BD</option>
+                    <option value="11">LR, BE</option>
+                    <option value="12">LR, CD</option>
+                    <option value="13">LR, CE</option>
+                    <option value="14">LR, ABC</option>
+                    <option value="15">LR, ABD</option>
+                    <option value="16">LR, ABE</option>
+                    <option value="17">LR, ACD</option>
+                    <option value="18">LR, ACE</option>
+                    <option value="19">LR, ADE</option>
+                    <option value="20">LL, A</option>
+                    <option value="21">LL, B</option>
+                    <option value="22">LL, C</option>
+                    <option value="23">LL, D</option>
+                    <option value="24">LL, E</option>
+                    <option value="25">LL, AB</option>
+                    <option value="26">LL, AC</option>
+                    <option value="27">LL, AD</option>
+                    <option value="28">LL, AE</option>
+                    <option value="29">LL, BC</option>
+                    <option value="30">LL, BD</option>
+                    <option value="31">LL, BE</option>
+                    <option value="32">LL, CD</option>
+                    <option value="33">LL, CE</option>
+                    <option value="34">LL, ABC</option>
+                    <option value="35">LL, ABD</option>
+                    <option value="36">LL, ABE</option>
+                    <option value="37">LL, ACD</option>
+                    <option value="38">LL, ACE</option>
+                    <option value="39">LL, ADE</option>
+                    <option value="40">UR, A</option>
+                    <option value="41">UR, B</option>
+                    <option value="42">UR, C</option>
+                    <option value="43">UR, D</option>
+                    <option value="44">UR, E</option>
+                    <option value="45">UR, AB</option>
+                    <option value="46">UR, AC</option>
+                    <option value="47">UR, AD</option>
+                    <option value="48">UR, AE</option>
+                    <option value="49">UR, BC</option>
+                    <option value="50">UR, BD</option>
+                    <option value="51">UR, BE</option>
+                    <option value="52">UR, CD</option>
+                    <option value="53">UR, CE</option>
+                    <option value="54">UR, ABC</option>
+                    <option value="55">UR, ABD</option>
+                    <option value="56">UR, ABE</option>
+                    <option value="57">UR, ACD</option>
+                    <option value="58">UR, ACE</option>
+                    <option value="59">UR, ADE</option>
+                    <option value="60">UL, A</option>
+                    <option value="61">UL, B</option>
+                    <option value="62">UL, C</option>
+                    <option value="63">UL, D</option>
+                    <option value="64">UL, E</option>
+                    <option value="65">UL, AB</option>
+                    <option value="66">UL, AC</option>
+                    <option value="67">UL, AD</option>
+                    <option value="68">UL, AE</option>
+                    <option value="69">UL, BC</option>
+                    <option value="70">UL, BD</option>
+                    <option value="71">UL, BE</option>
+                    <option value="72">UL, CD</option>
+                    <option value="73">UL, CE</option>
+                    <option value="74">UL, ABC</option>
+                    <option value="75">UL, ABD</option>
+                    <option value="76">UL, ABE</option>
+                    <option value="77">UL, ACD</option>
+                    <option value="78">UL, ACE</option>
+                    <option value="79">UL, ADE</option>
+                    <option value="80">LR, DA</option>
+                    <option value="81">LR, DB</option>
+                    <option value="82">LR, CC</option>
+                    <option value="83">LR, DE</option>
+                    <option value="84">LL, DA</option>
+                    <option value="85">LL, DB</option>
+                    <option value="86">LL, DC</option>
+                    <option value="87">LL, DE</option>
+                    <option value="88">UR, DA</option>
+                    <option value="89">UR, DB</option>
+                    <option value="90">UR, DC</option>
+                    <option value="91">UR, DE</option>
+                    <option value="92">UL DA</option>
+                    <option value="93">UL, DB</option>
+                    <option value="94">UL, DC</option>
+                    <option value="95">UL, DE</option>
+                    <option value="96">UR, E, LL, E</option>
+                    <option value="97">UR, B, UL, B</option>
+                    <option value="98">UL, E, UR, D</option>
+                    <option value="99">UR, E, UL, E</option>
+                    <option value="100">LR, D, LL, D</option>
+                    <option value="101">UR, AB, UL, AB</option>
+                    <option value="102">UR, E, LR, D, LL, DE</option>
+                    <option value="103">UR, ADE, UL, AD, LL, DE, LR, DE</option>
+                    <option value="104">UL, D, LL, D</option>
+                    
+                </select> 
+                </div>
+                <div class="form-group">                
+                 <select id="duration" name="duration" class="form-control">
+                    <option value="">Duration of Disease</option>
+                    <option value="1">1 Day</option>
+                    <option value="2">2 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="4">4 Days</option>
+                    <option value="5">5 Days</option>
+                    <option value="6">6 Days</option>
+                    <option value="7">1 Week</option>
+                    <option value="8">2 Weeks</option>
+                    <option value="9">3 Weeks</option>
+                    <option value="10">1 Month</option>
+                    <option value="11">2 Months</option>
+                    <option value="12">3 Months</option>
+                    <option value="13">4 Months</option>
+                    <option value="14">5 Months</option>
+                    <option value="15">6 Months</option>
+                    <option value="16">7 Months</option>
+                    <option value="17">8 Months</option>
+                    <option value="18">9 Months</option>
+                    <option value="19">10 Months</option>
+                    <option value="20">11 Months</option>
+                    <option value="21">1 year</option>
+                    <option value="22">2 years</option>
+                    <option value="23">3 years</option>
+                    <option value="24">4 years</option>
+                    <option value="25">5 years</option>
+                    <option value="26">6 years</option>
+                </select> </div>
+                <div class="form-group">                
+                 <select id="pain_sympton" name="pain_sympton" class="form-control">
+                    <option value="">Associated Pain Symptoms</option>
+                    <option value="0">NO HEADACHE, NO SLEEP DISTURBANCE</option>
+                    <option value="1">HEADACHE, SLEEP DISTURBANCE</option>
+                    
+                </select> </div>
+                <div class="form-group">                
+                 <select id="swelling_symptom" name="swelling_symptom" class="form-control">
+                    <option value="">Swelling Symptons</option>
+                    <option value="0">NO</option>
+                    <option value="1">PAIN,PUS DISCHARGE, BLEEDING</option>
+                    <option value="2">PAIN, NO PUS DISCHARGE</option>
+                    <option value="3">PAIN,SALTY DISCHARGE</option>
+                </select> 
+            </div>
+             <div class="form-group">                
+                 <select id="nona" name="nona" class="form-control">
+                    <option value="">Pain Complication</option>
+                    
+                    <option value="0">No</option>
+                    <option value="1">Difficulty in Chewing</option>
+                    <option value="2">Food Packing</option>
+                    <option value="3">Food Packing, Diff in Chewing</option>
+                    <option value="4">Difficulty in (Mouth Opening and Chewing)</option>
+                </select> 
+            </div>
+            <div class="form-group">                
+                 <select id="stimulus_pain" name="stimulus_pain" class="form-control">
+                    <option value="">Pain Stimulus</option>
+                    <option value="0">NON SPONTANEOUS</option>
+                    <option value="1">SPONTANEOUS</option>
+                </select> 
+            </div>
+            <div class="form-group">                
+                 <select id="pain_character" name="pain_character" class="form-control">
+                    <option value="">Pain Character</option>
+                    <option value="0">No</option>
+                    <option value="1">Intermittent</option>
+                    <option value="2">Continuous</option>
+                </select> 
+            </div>
+             <div class="form-group">                
+                 <select id="sensitivity" name="sensitivity" class="form-control">
+                    <option value="">Sensitivity</option>
+                    <option value="0">No</option>
+                    <option value="1">Cold</option>
+                </select> 
+            </div>
+            
+            <div class="form-group">                
+                <input type="number" id="nocarousteeth" name="nocarousteeth" class="form-control" placeholder="No of Carious Affected">
+            </div>
+            <div class="form-group">                 
+                <select name="notooth_affect" id="notooth_affect" class="form-control">
+                    <option value="">No of Tooth Affected</option>
+                    <option value="1">Decayed</option>
+                    <option value="2">Decayed, filled</option>
+                    <option value="3">Decayed, 1 missing</option>
+                </select>
+            </div>
+            <div class="form-group">                 
+                <select name="facial_assymmetry" id="facial_assymmetry" class="form-control">
+                    <option value="">Facial Asymmetry</option>
+                    <option value="0">No facial Asymmetry</option>
+                    <option value="1">Facial Asymmetry</option>
+                </select>
+
+            </div>
+            <div class="form-group">                
+                <select name="investigation" id="investigation" class="form-control">
+                    <option value="">Investigation</option>
+                    <option value="1">Pulpal Comm, Coronal Radio</option>
+                    <option value="2">No Pulpal Comm, Coronal Radio</option>
+                    <option value="3">Pulpal Comm, Coronal Radio, Furcation, Resorption</option>
+                    <option value="4">Pulpal Comm, Coronal Radio, Furcation</option>
+                    <option value="5">Pulpal Comm, Coronal Radio, Resorption</option>
+                    <option value="6">No Pulpal Comm, No Coronal Radio</option>
+                </select>
+            </div>
+            <div class="form-group">                
+                <select name="diet" id="diet" class="form-control">
+                    <option value="">Diet</option>
+                    <option value="1">Sweet, Biscuit, Tooth brushing, Flouride</option>
+                    <option value="2">Sweet, Biscuit, Drinks, Tooth brushing, Flouride, Bottle Feeding</option>
+                    <option value="3">Sweet, Biscuit, Drinks, Tooth brushing, Flouride, Plague Accumulation</option>
+                    
+                    <option value="4">Sweet,Biscuit, Drinks,Tooth brushing, Flouride</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">                
+                <select name="aggravating_factor" id="aggravating_factor" class="form-control">
+                    <option value="">Aggravating Factor</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    
+                    
+                </select>
+            </div>
+            <div class="form-group">                
+                <select name="progression" id="progression" class="form-control">
+                    <option value="">Progression</option>
+                    <option value="small">Smaller</option>
+                    <option value="Yes">Bigger</option>
+                    <option value="No">No</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">                
+                <select name="pain" id="pain" class="form-control">
+                    <option value="">Pain</option>
+                    <option value="sharp">Sharp</option>
+                    <option value="dull">dull</option>
+                    <option value="No">No</option>
+                    
+                </select>
+            </div>
+
+</div>
+        <div class="col-sm-5">
+            <div class="row">
+                    <div class="col-sm-12">
+                            <div class="table-responsive" style="min-height: 150px;">
+                                    <h3 style="text-align: center">Models Performance</h3>
+                                        <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                                            <thead><tr><th class="info">Classifiers</th><th class="info">Result</th>
+                                            <tbody>
+                                                <tr>
+                                                <td class="info"><strong>Random Forest</strong></td>
+                                                <td class="success" id="svm_res" style="text-align: justify;"></td>                            
+                                                
+                                            </tbody>  
+                                            <tbody>
+                                                <tr><td class="info"><strong>Naive Bayes</strong></td>
+                                                    <td class="success" id="nb_res" style="text-align: justify;"></td>                                
+                                                </tr>                              
+                                            </tbody>   
+                                                               
+                                            <tbody>
+                                                <tr>
+                                                    <td class="info"><strong>Multilayer Perceptron</strong></td>
+                                                    <td class="success" id="mlp_res" style="text-align: justify;"></td>                               
+                                                </tr>
+                                                
+                                            </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="info"><strong>Stacking</strong></td>
+                                                    <td class="success" id="sst" style="text-align: justify;"></td>                               
+                                                </tr>
+                                                
+                                            </tbody>
+                                                                   
+                                        </table>
+                                    <h3>Treatment Plan of the Diagnosis</h3>
+                                        <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                                            <thead><tr><th class="info"></th><th class="info">Result</th>
+                                            
+                                            <tbody>
+                                                <tr>
+                                                <td class="success" id="sst" style="text-align: justify;">Treatment Plan</td>   
+                                                    <td class="success" id="tret" style="text-align: justify;"></td>                                
+                                                </tr>                              
+                                            </tbody>   
+                                                               
+                                            
+                                                                   
+                                        </table>
+                                        <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                                            <thead><tr><th class="info"></th><th class="info">Classification Level</th>
+                                            
+                                            <tbody>
+                                                <tr>
+                                                <td></td>
+                                                    <td class="success" id="risk" style="text-align: justify;"></td>                                
+                                                </tr>                              
+                                            </tbody>   
+                                                               
+                                            
+                                                                   
+                                        </table>
+                                    
+                                </div>
+
+                                
+                    </div>
+                    <div class="col-sm-12">                                                                
+                                        
+                        <div class="col-md-6 mx-auto">
+                            
+                            <button id="test_ev_" class="btn btn-success"> View Result</button>
+                        </div>                        
+                                    
+                    </div>
+            </div>     
+        </div>
+    </div>
+</div>
+

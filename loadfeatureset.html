@@ -1,0 +1,30 @@
+<div class="scrolling-wrapper">
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {%for h in dataset%}
+                    <th>{{h}}</th>
+                    {%endfor%}                    
+                </tr>
+            </thead>
+            <tbody>
+                {%for d in featureset%}
+                    <tr>
+                        <td>{{d._0}}</td>
+                        <td>{{d._1}}</td>
+                        <td>{{d._2}}</td>
+                        <td>{{d._3}}</td>
+                        <td>{{d._4}}</td>
+                        <td>{{d._5}}</td>
+                        <td>{{d._6}}</td>
+                        <td>{{d._7}}</td>
+                        <td>{{d._8}}</td>
+                        <td>{{d._9}}</td>
+                        <td>{{d._10}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        
+</div>

@@ -1,0 +1,259 @@
+
+<script>       
+    $(function() {
+        $('#alog_btn_fs').bind('click', function() {
+            $.getJSON('/algorithm_process_FS',{
+            }, function(da) {
+                $('#acc_svm').text(da.acc_svm);
+                $("#pre_svm").text(da.prec_svm);
+                $("#rec_svm").text(da.rec_svm);
+                $("#fms_svm").text(da.fms_svm);                
+                $('#acc_nb').text(da.acc_nb);
+                $("#pre_nb").text(da.prec_nb);
+                $("#rec_nb").text(da.rec_nb);
+                $("#fms_nb").text(da.fms_nb);                
+                $('#acc_mlp').text(da.acc_mlp);
+                $("#pre_mlp").text(da.prec_mlp);
+                $("#rec_mlp").text(da.rec_mlp);
+                $("#fms_mlp").text(da.fms_mlp);                
+            });
+            return false;
+        });
+    });
+    
+        $(function() {
+        $('#test_ev_rbf').bind('click', function() {
+            $.getJSON('/stackingmodel_FS',{
+            }, function(da) {
+                $('#acc_rbf_e').text(da.svmacc_s);
+                $("#pre_rbf_e").text(da.svmprec_s);
+                $("#rec_rbf_e").text(da.svmrec_s);
+                $("#fms_rbf_e").text(da.svmfms_s);                
+                $('#acc_nb_e').text(da.nbacc_s);
+                $("#pre_nb_e").text(da.nbprec_s);
+                $("#rec_nb_e").text(da.nbrec_s);
+                $("#fms_nb_e").text(da.nbfms_s);                
+                $('#acc_mlp_e').text(da.mlpacc_s);
+                $("#pre_mlp_e").text(da.mlpprec_s);
+                $("#rec_mlp_e").text(da.mlprec_s);
+                $("#fms_mlp_e").text(da.mlpfms_s);                
+            });
+            return false;
+        });
+        
+    }); 
+    $(function() {
+        $('#alog_btn_nfs').bind('click', function() {
+            $.getJSON('/algorithm_process_NFS',{
+            }, function(da) {
+                $('#acc_svm_wt').text(da.acc_svm);
+                $("#pre_svm_wt").text(da.prec_svm);
+                $("#rec_svm_wt").text(da.rec_svm);
+                $("#fms_svm_wt").text(da.fms_svm);                
+                $('#acc_nb_wt').text(da.acc_nb);
+                $("#pre_nb_wt").text(da.prec_nb);
+                $("#rec_nb_wt").text(da.rec_nb);
+                $("#fms_nb_wt").text(da.fms_nb);                
+                $('#acc_mlp_wt').text(da.acc_mlp);
+                $("#pre_mlp_wt").text(da.prec_mlp);
+                $("#rec_mlp_wt").text(da.rec_mlp);
+                $("#fms_mlp_wt").text(da.fms_mlp);                
+            });
+            return false;
+        });
+    });
+    
+    $(function() {
+        $('#test_ev_wt_x').bind('click', function() {
+            $.getJSON('/stackingmodel_NFS',{
+            }, function(da) {
+                $('#acc_rbf_wte').text(da.svmacc_s);
+                $("#pre_rbf_wte").text(da.svmprec_s);
+                $("#rec_rbf_wte").text(da.svmrec_s);
+                $("#fms_rbf_wte").text(da.svmfms_s);                
+                $('#acc_nb_wte').text(da.nbacc_s);
+                $("#pre_nb_wte").text(da.nbprec_s);
+                $("#rec_nb_wte").text(da.nbrec_s);
+                $("#fms_nb_wte").text(da.nbfms_s);                
+                $('#acc_mlp_wte').text(da.mlpacc_s);
+                $("#pre_mlp_wte").text(da.mlpprec_s);
+                $("#rec_mlp_wte").text(da.mlprec_s);
+                $("#fms_mlp_wte").text(da.mlpfms_s);                
+            })
+            return false;
+        });
+        
+    }); 
+</script>
+<div class="row">
+    <div class="col-sm-8">           
+        <div class="table-responsive" style="min-height: 150px;">
+            <h3 style="text-align: center">Alogrithms Based on Feature Selection</h3>
+                <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                    <thead><tr><th class="info">Classifiers</th><th class="info">Accuracy(%)</th><th class="info">Precision(%)</th><th class="info">Recall(%)</th><th class="info">FMeasure(%)</th></tr></thead>
+                    <tbody>
+                        <tr>
+                        <td class="info"><strong>Random Forest</strong></td>
+                        <td class="success" id="acc_svm" style="text-align: justify;"></td>
+                        <td class="success" id="pre_svm" style="text-align: justify;"></td>
+                        <td class="success" id="rec_svm" style="text-align: justify;"></td>
+                        <td class="success" id="fms_svm" style="text-align: justify;"></td>                       
+                        </tr>
+                        
+                    </tbody>  
+                    <tbody>
+                        <tr><td class="info"><strong>Naive Bayes</strong></td>
+                            <td class="success" id="acc_nb" style="text-align: justify;"></td>
+                            <td class="success" id="pre_nb" style="text-align: justify;"></td>
+                            <td class="success" id="rec_nb" style="text-align: justify;"></td>
+                            <td class="success" id="fms_nb" style="text-align: justify;"></td>                           
+                        </tr>                              
+                    </tbody>   
+                                        
+                    <tbody>
+                        <tr>
+                            <td class="info"><strong>Multilayer Perceptron</strong></td>
+                            <td class="success" id="acc_mlp" style="text-align: justify;"></td>
+                            <td class="success" id="pre_mlp" style="text-align: justify;"></td>
+                            <td class="success" id="rec_mlp" style="text-align: justify;"></td>
+                            <td class="success" id="fms_mlp" style="text-align: justify;"></td>                            
+                        </tr>
+                        
+                    </tbody>
+                                       
+                </table>
+                <button id="alog_btn_fs" class="btn btn-success"> View Result</button>
+            </div>                
+        
+            
+    </div>
+</div>
+    <div class="row">
+            <div class="col-sm-8">           
+                <div class="table-responsive" style="min-height: 150px;">
+                    <h3 style="text-align: center">Ensemble techniques with Feature Selection</h3>
+                        <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                            <thead><tr><th class="info">Classifiers</th><th class="info">Accuracy (%)</th><th class="info">Precision (%)</th><th class="info">Recall (%)</th><th class="info">FMeasure (%)</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                <td class="info"><strong>NB+MLP => RF</strong></td>
+                                <td class="success" id="acc_rbf_e" style="text-align: justify;"></td>
+                                <td class="success" id="pre_rbf_e" style="text-align: justify;"></td>
+                                <td class="success" id="rec_rbf_e" style="text-align: justify;"></td>
+                                <td class="success" id="fms_rbf_e" style="text-align: justify;"></td>                               
+                                </tr>                                
+                            </tbody>  
+                            <tbody>
+                                <tr><td class="info"><strong>RF+MLP => NB</strong></td>
+                                    <td class="success" id="acc_nb_e" style="text-align: justify;"></td>
+                                    <td class="success" id="pre_nb_e" style="text-align: justify;"></td>
+                                    <td class="success" id="rec_nb_e" style="text-align: justify;"></td>
+                                    <td class="success" id="fms_nb_e" style="text-align: justify;"></td>                                    
+                                </tr>                              
+                            </tbody>   
+                                                
+                            <tbody>
+                                <tr>
+                                    <td class="info"><strong>RF+NB => MLP</strong></td>
+                                    <td class="success" id="acc_mlp_e" style="text-align: justify;"></td>
+                                    <td class="success" id="pre_mlp_e" style="text-align: justify;"></td>
+                                    <td class="success" id="rec_mlp_e" style="text-align: justify;"></td>
+                                    <td class="success" id="fms_mlp_e" style="text-align: justify;"></td>                                    
+                                </tr>
+                                
+                            </tbody>
+                                                  
+                        </table>
+                        <button id="test_ev_rbf" class="btn btn-success"> View Result</button>
+                    </div>                
+                
+                    
+            </div> 
+</div>
+
+<div class="row">
+        <div class="col-sm-8">           
+            <div class="table-responsive" style="min-height: 150px;">
+                <h3 style="text-align: center">Alogrithms without Feature Selection</h3>
+                    <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                        <thead><tr><th class="info">Classifiers</th><th class="info">Accuracy (%)</th><th class="info">Precision (%)</th><th class="info">Recall (%)</th><th class="info">FMeasure (%)</th></tr></thead>
+                        <tbody>
+                            <tr>
+                            <td class="info"><strong>Random Forest</strong></td>
+                            <td class="success" id="acc_svm_wt" style="text-align: justify;"></td>
+                            <td class="success" id="pre_svm_wt" style="text-align: justify;"></td>
+                            <td class="success" id="rec_svm_wt" style="text-align: justify;"></td>
+                            <td class="success" id="fms_svm_wt" style="text-align: justify;"></td>                            
+                            </tr>                            
+                        </tbody>  
+                        <tbody>
+                            <tr><td class="info"><strong>Naive Bayes</strong></td>
+                                <td class="success" id="acc_nb_wt" style="text-align: justify;"></td>
+                                <td class="success" id="pre_nb_wt" style="text-align: justify;"></td>
+                                <td class="success" id="rec_nb_wt" style="text-align: justify;"></td>
+                                <td class="success" id="fms_nb_wt" style="text-align: justify;"></td>                                
+                            </tr>                              
+                        </tbody>   
+                                            
+                        <tbody>
+                            <tr>
+                                <td class="info"><strong>Multilayer Perceptron</strong></td>
+                                <td class="success" id="acc_mlp_wt" style="text-align: justify;"></td>
+                                <td class="success" id="pre_mlp_wt" style="text-align: justify;"></td>
+                                <td class="success" id="rec_mlp_wt" style="text-align: justify;"></td>
+                                <td class="success" id="fms_mlp_wt" style="text-align: justify;"></td>                                
+                            </tr>
+                            
+                        </tbody>
+                                           
+                    </table>
+                    <button id="alog_btn_nfs" class="btn btn-success"> View Result</button>
+            </div>                
+            
+                
+    </div>
+</div>
+    <div class="row">
+                <div class="col-sm-8">           
+                    <div class="table-responsive" style="min-height: 150px;">
+                        <h3 style="text-align: center">Ensemble techniques without Feature Selection</h3>
+                            <table class="table table-bordered table-hover table-condensed" style="text-justify:auto;">
+                                <thead><tr><th class="info">Classifiers</th><th class="info">Accuracy (%)</th><th class="info">Precision (%)</th><th class="info">Recall (%)</th><th class="info">FMeasure (%)</th></tr></thead>
+                                <tbody>
+                                    <tr>
+                                    <td class="info"><strong>NB+MLP => RF</strong></td>
+                                    <td class="success" id="acc_rbf_wte" style="text-align: justify;"></td>
+                                    <td class="success" id="pre_rbf_wte" style="text-align: justify;"></td>
+                                    <td class="success" id="rec_rbf_wte" style="text-align: justify;"></td>
+                                    <td class="success" id="fms_rbf_wte" style="text-align: justify;"></td>                                    
+                                    </tr>
+                                    
+                                </tbody>  
+                                <tbody>
+                                    <tr><td class="info"><strong>RF+MLP => NB</strong></td>
+                                        <td class="success" id="acc_nb_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="pre_nb_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="rec_nb_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="fms_nb_wte" style="text-align: justify;"></td>                                        
+                                    </tr>                              
+                                </tbody>   
+                                                    
+                                <tbody>
+                                    <tr>
+                                        <td class="info"><strong>RF+NB => MLP</strong></td>
+                                        <td class="success" id="acc_mlp_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="pre_mlp_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="rec_mlp_wte" style="text-align: justify;"></td>
+                                        <td class="success" id="fms_mlp_wte" style="text-align: justify;"></td>                                        
+                                    </tr>
+                                    
+                                </tbody>
+                                                      
+                            </table>
+                            <button id="test_ev_wt_x" class="btn btn-success"> View Result</button>
+                        </div>                
+                    
+                        
+                </div> 
+        
+    </div>

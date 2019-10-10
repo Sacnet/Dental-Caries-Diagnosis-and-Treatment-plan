@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diagnostic and Treatment Planning System for Dental Caries in Children</title>
+    <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main1.js')}}"></script>    
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bar.css')}}">    
+        
+</head>
+<body>               
+<div class="container_fluid">            
+     
+    <nav class="navbar-fixed-top">
+        Diagnostic and Treatment Planning System for Dental Caries in Children
+    </nav> 
+        <div class="row" style="width: 100%">
+            <div class="col-sm-3 no-float navbar-fixed-left" style="background-color: #2b3856; padding-top: 70px;">
+                <div  style="color: #ffffff;">
+                    <ul style="padding:20px; list-style: none;">
+                        <li style="font-weight: bold;">Ojo Toyosi Julianah</li>
+                        <li>TP16/17/H/0916</li>
+                        <hr>                   
+                        <li style="font-size: 16px;">Supervisor: Dr. K.C. Olufokunbi</li>
+                        <li style="font-size: 16px;">Co-Supervisor: Prof. M.O. Ukpong (Department of Child Dental Health)</li>                   
+                        <hr>
+                    </ul>
+                
+                    <div class="lefto">
+                        <ul>
+                            <li><a href="{{url_for('loaddata')}}" id="loaddataset">Load Dataset</a></li>
+                            <li><a href="{{url_for('loadfeatures')}}">Load Exracted Features</a></li>
+                            <li> <a href="{{url_for('loadfeatureset')}}">Load Featuresets</a></li>
+                            <li><a href="{{url_for('systemdemo')}}">System Demonstration</a></li>
+                            <li><a href="{{url_for('systemeval')}}">System Evaluation</a></li>
+                            <li><a href="{{url_for('confussion_matrix')}}">Using Confussion Matrix</a></li>                           
+                        </ul>
+                    </div>        
+                                     
+                </div>
+            
+            </div>
+            <div class="col-sm-9" style="padding-right: 40px; padding-top: 20px; text-justify: auto; overflow: hidden;">
+                <div id="ccontent" style=" margin-top: 50px;"> 
+                   <div style="font-size: 20px; text-align: justify; margin-right: 40px; z-index: auto;">
+                        There are 162 records collected using Case Note and through Expert<br>
+                   <p><b>Tools used: </b>Natural language toolkit (NLTK) and Python</p>
+                   <p><b>Alogrithm used: </b>Naive Bayes, RandomForest Classifiers, Multilayer Perceptron. Ensemble techniques is Stack Generalization</p>
+                   
+                   <p><b>Metrics used: </b>Accuracy, Sentivity, Precision, Confussion Matrix, Alpha and Beta Testing</p>
+                   </div>
+                </div>
+            </div>
+        </div>   
+    
+    </div>
+</body>
+</html>

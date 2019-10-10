@@ -1,0 +1,39 @@
+<div class="scrolling-wrapper">
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {%for h in data%}
+                    <th>{{h}}</th>
+                    {%endfor%}                    
+                </tr>
+            </thead>
+            <tbody>
+                {%for d in feature%}
+                    <tr>
+                        <td>{{d.age}}</td>
+                        <td>{{d.classification}}</td> 
+                <td>{{d.present_complain}}</td> 
+                <td>{{d.location}}</td>  
+                <td>{{d.duration}}</td> 
+                <td>{{d.pain_sympton}}</td>  
+                <td>{{d.swelling_symptom}}</td>    
+                <td>{{d.nona}}</td> 
+                <td>{{d.stimulus_pain}}</td>  
+                <td>{{d.character_pain}}</td>
+                <td>{{d.sensitivity}}</td>
+                <td>{{d.complication}}</td>
+                <td>{{d.nocarousteeth}}</td>
+                <td>{{d.notooth_affect}}</td>
+                <td>{{d.facial_assymmetry}}</td>
+                <td>{{d.investigation}}</td>
+                <td>{{d.diet}}</td>
+                <td>{{d.aggravating_factor}}</td>
+                <td>{{d.progression}}</td>
+                <td>{{d.pain}}</td>
+                
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+</div>
